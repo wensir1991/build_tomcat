@@ -21,7 +21,7 @@ RUN wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaage
     mv jmx_prometheus_javaagent-0.3.1.jar /usr/local/jmx
 
 COPY  tomcat.yml /usr/local/jmx/config.yaml
-RUN sed -i '2a JAVA_OPTS="-javaagent:/usr/local/jmx/jmx_prometheus_javaagent-0.3.1.jar=8080:/usr/local/jmx/config.yaml"' /usr/local/tomcat/bin/catalina.sh
+RUN sed -i '2a JAVA_OPTS="-javaagent:/usr/local/jmx/jmx_prometheus_javaagent-0.3.1.jar=8989:/usr/local/jmx/config.yaml"' /usr/local/tomcat/bin/catalina.sh
 
 ENV JAVA_HOME=/usr/local/jdk
 ENV JRE_HOME=$JAVA_HOME/jre
@@ -29,5 +29,5 @@ ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CL
 ENV PATH=/sbin:$JAVA_HOME/bin:$PATH:/usr/local/tomcat/bin
 RUN rm -rf /root/*
 WORKDIR /usr/local/tomcat
-EXPOSE 8080
+EXPOSE 8080 8989
 CMD ["catalina.sh", "run"]
