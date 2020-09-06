@@ -21,7 +21,7 @@ RUN wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaage
     mv jmx_prometheus_javaagent-0.3.1.jar /usr/local/jmx
 
 COPY  tomcat.yml /usr/local/jmx/config.yaml
-RUN sed -i '2a JAVA_OPTS="-javaagent:/usr/local/jmx/jmx_prometheus_javaagent-0.3.1.jar=8989:/usr/local/jmx/config.yaml"' /usr/local/tomcat/bin/catalina.sh
+#RUN sed -i '2a JAVA_OPTS="-javaagent:/usr/local/jmx/jmx_prometheus_javaagent-0.3.1.jar=8989:/usr/local/jmx/config.yaml"' /usr/local/tomcat/bin/catalina.sh
 
 ENV JAVA_HOME=/usr/local/jdk
 ENV JRE_HOME=$JAVA_HOME/jre
